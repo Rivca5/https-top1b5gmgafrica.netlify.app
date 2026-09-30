@@ -1,54 +1,53 @@
-# Hugo template for Decap CMS with Netlify Identity
-
-This is a small business template built with [Hugo](https://gohugo.io) and [Decap CMS](https://github.com/decaporg/decap-cms), designed and developed by [Darin Dimitroff](https://twitter.com/deezel), [spacefarm.digital](https://www.spacefarm.digital).
-
-## Getting started
-
-Use our deploy button to get your own copy of the repository. 
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/decaporg/one-click-hugo-cms&stack=cms)
-
-This will setup everything needed for running the CMS:
-
-* A new repository in your GitHub account with the code
-* Full Continuous Deployment to Netlify's global CDN network
-* Control users and access with Netlify Identity
-* Manage content with Decap CMS
-
-Once the initial build finishes, you can invite yourself as a user. Go to the Identity tab in your new site, click "Invite" and send yourself an invite.
-
-Now you're all set, and you can start editing content!
-
-## Local Development
-
-Clone this repository, and run `yarn` or `npm install` from the new folder to install all required dependencies.
-
-Then start the development server with `yarn start` or `npm start`.
-
-## Testing
-
-With the development server running, run the tests locally
-with `yarn cypress:run` or `npm run cypress:run`.
-Or use `yarn cypress:open` or `npm run cypress:open` to run interactively.
-
-Cypress tests also run on deploy with the [Cypress Netlify integration](https://www.netlify.com/integrations/cypress/).
-
-## Layouts
-
-The template is based on small, content-agnostic partials that can be mixed and matched. The pre-built pages showcase just a few of the possible combinations. Refer to the `site/layouts/partials` folder for all available partials.
-
-Use Hugo’s `dict` functionality to feed content into partials and avoid repeating yourself and creating discrepancies.
-
-## CSS
-
-The template uses a custom fork of Tachyons and PostCSS with cssnext and cssnano. To customize the template for your brand, refer to `src/css/imports/_variables.css` where most of the important global variables like colors and spacing are stored.
-
-## SVG Social Icons
-
-The social media icons are in `site/assets/img`.
-Make sure you use consistent icons in terms of viewport and art direction for optimal results.
-For an icon named `icons-facebook.svg`, refer to the SVG `social-icon` partial like so:
-
-```
-{{ partial "social-icon" (dict "link" "#" "svg" "icons-facebook" "alt" "Kaldi on Facebook") }}
-```
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TOP1B5 MAGIQUE VOL5</title>
+<style>
+body{margin:0;font-family:Arial;background:#000;color:#fff;text-align:center}
+.screen{display:none;padding:20px;min-height:100vh}
+.active{display:block}
+.btn{padding:15px 25px;margin:10px;border:none;border-radius:10px;font-weight:bold;font-size:18px;width:90%}
+.btn-jeune{background:#FFD700;color:#000}
+.btn-central{background:#C00000;color:#fff}
+.card{background:#111;border:1px solid #FFD700;border-radius:12px;padding:15px;margin:10px}
+input{padding:12px;width:80%;border-radius:8px;margin:10px}
+</style>
+</head>
+<body>
+<div id="accueil" class="screen active">
+<h1 style="color:#FFD700">TOP1B5 🇧🇫</h1>
+<h3>BASE CENTRALE MAGIQUE VOL5</h3>
+<button class="btn btn-jeune" onclick="show('jeunesse')">JE SUIS JEUNESSE</button>
+<button class="btn btn-central" onclick="show('login')">GROUPEMENT CENTRALE - PDG</button>
+<p style="font-size:12px;margin-top:30px">RIVCA SARL - Faso Dan Fani<br>BCLCC 25 39 58 41</p>
+</div>
+<div id="jeunesse" class="screen">
+<h2 style="color:#FFD700">ESPACE JEUNESSE - PART</h2>
+<div class="card">Catalogue 9 Tenues Faso Dan Fani</div>
+<div class="card">Commander</div>
+<div class="card">Contact 51 41 40 99</div>
+<button class="btn btn-jeune" onclick="show('accueil')">Retour</button>
+</div>
+<div id="login" class="screen">
+<h2 style="color:#C00000">GROUPEMENT CENTRALE</h2>
+<input type="password" id="pin" placeholder="Code PIN PDG">
+<button class="btn btn-central" onclick="checkPin()">ENTRER</button>
+<p id="error" style="color:red"></p>
+<button class="btn" onclick="show('accueil')" style="background:#333;color:#fff">Retour</button>
+</div>
+<div id="centrale" class="screen">
+<h2 style="color:#C00000">BASE CENTRALE - PDG</h2>
+<div class="card">Montre Tournante Detecteur Danger</div>
+<div class="card">Transmission AES BCLCC</div>
+<div class="card">Gestion Commandes</div>
+<div class="card">DSI-2026-RIVCA-22651414099</div>
+<button class="btn btn-central" onclick="show('accueil')">Deconnexion</button>
+</div>
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function checkPin(){let c=document.getElementById('pin').value;if(c==='51414099'||c==='22651414099'){show('centrale');document.getElementById('pin').value='';document.getElementById('error').innerText='';}else{document.getElementById('error').innerText='Code incorrect - Acces refuse';}}
+</script>
+</body>
+</html>
